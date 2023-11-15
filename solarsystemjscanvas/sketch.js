@@ -56,9 +56,11 @@ class Planet {
 let planet = [];
 let lastFrameTime = 0;
 let asteroid = [];
-let sun = new Image();
-sun.src = 'asset/pl1.png';
+
 let rot = 0;
+
+let sun = new Animator();
+sun.setImg('sun', 4, 'sun');
 
 for(let i = 1; i <= 4; i++){
     planet.push(new Planet(0, 0, i * 90, random(-0.01, 0.01),`pl${i+1}.png`));
@@ -70,7 +72,7 @@ function loop(timestamp){
 
     let deltaTime = (timestamp - lastFrameTime) / 1000;
 
-    if(Math.random() < 0.2){
+    if(Math.random() < 0.1){
         asteroid.push(new Planet(0, 0, random(0, 100), 0.01, ''));
     }
 
@@ -95,12 +97,13 @@ function loop(timestamp){
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height/2);
     ctx.rotate(rot);
-    ctx.drawImage(sun, -48, -48, 100, 100);
+    sun.animate(-48, -48, 100, 100);
     ctx.restore();
 
     rot += 0.01;
 
     window.requestAnimationFrame(loop);
+
 
 }
 
