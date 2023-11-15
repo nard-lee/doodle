@@ -36,26 +36,29 @@ class Planet {
         ctx.restore();
 
     }
-    update(){
+    update(delta){
         this.angle += this.vel;
         this.rot += 0.04;
     }
 }
 
 let planet = [];
+let lastFrameTime = 0;
 
 for(let i = 1; i <= 4; i++){
     planet.push(new Planet(0, 0, i * 95, random(-0.03, 0.03),`pl${i+1}.png`));
 }
 
 
-function loop(){
+function loop(timestamp){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let deltaTime = (timestamp - lastFrameTime) / 1000;
 
     for(let i = 0; i < planet.length; i++){
         
         planet[i].display();
-        planet[i].update();
+        planet[i].update(deltaTime);
     }
 
 
