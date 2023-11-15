@@ -27,11 +27,11 @@ class Planet {
         ctx.translate(300, 300);
         ctx.rotate(this.rot);
         ctx.alpha = 0.4;
-        strokeArc(0, 0, this.r, "#fff");
-        arc(pcx, pcy, 20, "#fff");
-        line(0, 0, pcx, pcy, "#fff")
+        strokeArc(0, 0, this.r, "#333");
+        line(0, 0, pcx, pcy, "#333")
+        arc(pcx, pcy, 20, "#333");
         ctx.drawImage(img, pcx -20.5, pcy -20.5, 39, 39);
-        arc(0, 0, 21, "#fff");
+        arc(0, 0, 21, "#333");
         ctx.drawImage(sun, -19.4, -19.4, 39, 39);
 
         ctx.restore();
@@ -47,7 +47,7 @@ let planet = [];
 let sprite = ['', 'Baren.png', 'Black_hole.png', 'Ice.png', 'Terran.png'];
 
 for(let i = 1; i <= 4; i++){
-    planet.push(new Planet(0, 0, i * 60, random(-0.06, 0.06), sprite[i]));
+    planet.push(new Planet(0, 0, i * 60, random(-0.03, 0.03), sprite[i]));
 }
 
 
