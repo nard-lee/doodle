@@ -16,8 +16,8 @@ class Planet {
         let img = new Image();
         img.src = 'asset/'+this.imgsrc; 
 
-        let sun = new Image();
-        sun.src = 'asset/pl1.png';
+        let asteroid = new Image();
+        asteroid.src = 'asset/Baren.png'; 
 
         let pcx = this.x + this.r * Math.cos(this.angle);
         let pcy = this.y + this.r * Math.sin(this.angle);
@@ -27,11 +27,9 @@ class Planet {
         ctx.rotate(this.rot);
         ctx.alpha = 0.4;
         strokeArc(0, 0, this.r, "#333");
-        line(0, 0, pcx, pcy, "#333")
-        arc(pcx, pcy, 20, "#333");
+        //line(0, 0, pcx, pcy, "#333")
+        arc(pcx, pcy, 3, "#333");
         ctx.drawImage(img, pcx-30, pcy-30, 60, 60);
-        arc(0, 0, 30, "#333");
-        ctx.drawImage(sun, -38, -38, 70, 70);
 
         ctx.restore();
 
@@ -40,13 +38,30 @@ class Planet {
         this.angle += this.vel;
         this.rot += 0.04;
     }
+    show(){
+
+        let pcx = this.x + this.r * Math.cos(this.angle);
+        let pcy = this.y + this.r * Math.sin(this.angle);
+
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.h / 2);
+        arc(pcx, pcy, 5, "red");
+        ctx.restore();
+    }
+    shower(){
+        this.r += 1;
+    }
 }
 
 let planet = [];
 let lastFrameTime = 0;
+let asteroid = [];
+let sun = new Image();
+sun.src = 'asset/pl1.png';
+let rot = 0;
 
 for(let i = 1; i <= 4; i++){
-    planet.push(new Planet(0, 0, i * 95, random(-0.03, 0.03),`pl${i+1}.png`));
+    planet.push(new Planet(0, 0, i * 90, random(-0.01, 0.01),`pl${i+1}.png`));
 }
 
 
@@ -55,14 +70,35 @@ function loop(timestamp){
 
     let deltaTime = (timestamp - lastFrameTime) / 1000;
 
+    if(Math.random() < 0.2){
+        asteroid.push(new Planet(0, 0, random(0, 100), 0.01, ''));
+    }
+
+    for(let i = 0; i < asteroid.length; i++){
+        asteroid[i].display();  
+        asteroid[i].update(deltaTime)
+        asteroid[i].shower();
+    }
+
+    for(let i = 0; i < asteroid.length; i++){
+        if(asteroid[i].r > 400){
+            asteroid.splice(i, 1);
+        }
+    }
+
     for(let i = 0; i < planet.length; i++){
-        
         planet[i].display();
         planet[i].update(deltaTime);
     }
 
 
+    ctx.save();
+    ctx.translate(canvas.width / 2, canvas.height/2);
+    ctx.rotate(rot);
+    ctx.drawImage(sun, -48, -48, 100, 100);
+    ctx.restore();
 
+    rot += 0.01;
 
     window.requestAnimationFrame(loop);
 
