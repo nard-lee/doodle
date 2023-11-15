@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar System</title>
-
+    <style>
+        body {
+            background: #000;
+        }
+        .panel {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     
-    <canvas width="600" height="600" id="canvas" style="background: #000;"></canvas>
+    <div class="panel">
+        <canvas width="800" height="800" id="canvas" style="background: #000;"></canvas>
+    </div>
+
     <script src="../lib.js" ></script>
     <script src="./sketch.js"></script>
 </body>
