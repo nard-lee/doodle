@@ -1,23 +1,15 @@
 
 class Planet {
-    constructor(x, y, r, v, src){
+    constructor(x, y, r, v){
         this.x = x;
         this.y = y;
         this.angle = 1;
         this.r = r;
-        this.count = 0;
-        this.planets = [];
         this.vel = v;
-        this.imgsrc = src;  
         this.rot = 0;
+        this.spr = new Animator();
     }
     display(){
-
-        let img = new Image();
-        img.src = 'asset/'+this.imgsrc; 
-
-        let asteroid = new Image();
-        asteroid.src = 'asset/Baren.png'; 
 
         let pcx = this.x + this.r * Math.cos(this.angle);
         let pcy = this.y + this.r * Math.sin(this.angle);
@@ -27,26 +19,17 @@ class Planet {
         ctx.rotate(this.rot);
         ctx.alpha = 0.4;
         strokeArc(0, 0, this.r, "#333");
-        //line(0, 0, pcx, pcy, "#333")
         arc(pcx, pcy, 3, "#333");
-        ctx.drawImage(img, pcx-30, pcy-30, 60, 60);
-
+        this.spr.animate(pcx-30, pcy-30, 60, 60);
         ctx.restore();
 
+    }
+    setSprite(src){
+        this.spr.setImg(src, 4);
     }
     update(delta){
         this.angle += this.vel;
-        this.rot += 0.04;
-    }
-    show(){
-
-        let pcx = this.x + this.r * Math.cos(this.angle);
-        let pcy = this.y + this.r * Math.sin(this.angle);
-
-        ctx.save();
-        ctx.translate(canvas.width / 2, canvas.h / 2);
-        arc(pcx, pcy, 5, "red");
-        ctx.restore();
+        this.rot += 0.02;
     }
     shower(){
         this.r += 1;
@@ -56,6 +39,7 @@ class Planet {
 let planet = [];
 let lastFrameTime = 0;
 let asteroid = [];
+let sprites = ['GreenGiant', 'Lush', 'OrangeGiant', 'Rocky'];
 
 let rot = 0;
 
@@ -63,9 +47,12 @@ let sun = new Animator();
 sun.setImg('sun', 4, 'sun');
 
 for(let i = 1; i <= 4; i++){
-    planet.push(new Planet(0, 0, i * 90, random(-0.01, 0.01),`pl${i+1}.png`));
+    planet.push(new Planet(0, 0, i * 90, random(-0.01, 0.01),'Lush'));
 }
 
+for(let i = 0; i < planet.length; i++){
+    planet[i].setSprite(sprites[i]);
+}
 
 function loop(timestamp){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -102,9 +89,8 @@ function loop(timestamp){
 
     rot += 0.01;
 
-    window.requestAnimationFrame(loop);
-
+    //window.requestAnimationFrame(loop);
 
 }
 
-loop();
+setInterval(loop, 30);

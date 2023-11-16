@@ -4,20 +4,16 @@ class Animator {
         this.frameCount = 0;
     }
     animate(x, y, w, h) {
-
-        ctx.drawImage(this.images[this.frameCount], x, y, w, h);
-        this.frameCount++;
-
-        if (this.frameCount >= this.images.length) {
-            this.frameCount = 0;
+        if (this.images.length > 0) {
+            ctx.drawImage(this.images[this.frameCount % this.images.length], x, y, w, h);
+            this.frameCount++;
         }
-
     }
-    setImg(src, len, title) {
+    setImg(src, len) {
         for (let i = 0; i <= len; i++) {
             let img = new Image();
-            img.src = `${src}/${title + i}.png`;
-            this.images.push(img);
+            img.src = `${src}/${src + i}.png`;
+            img.onload = () => this.images.push(img);
         }
     }
 }
