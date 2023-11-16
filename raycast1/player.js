@@ -49,6 +49,17 @@ class Player {
 
             line(this.x, this.y, rayX, rayY, '#fff')
 
+
+            for (let i = 0; i < tileMap.map.length; i++) {
+                if (tileMap.map[i] === 1) { // Only check solid tiles
+                    let tileX = (i % tileMap.cols) * tileMap.tileSize;
+                    let tileY = (Math.floor(i / tileMap.rows)) * tileMap.tileSize;
+
+                    tileMap.display(tileX, tileY, 'red');
+
+                }
+            }
+
         }
 
     }
