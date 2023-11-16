@@ -27,7 +27,7 @@ class Planet {
     setSprite(src){
         this.spr.setImg(src, 4);
     }
-    update(delta){
+    update(){
         this.angle += this.vel;
         this.rot += 0.02;
     }
@@ -54,10 +54,22 @@ for(let i = 0; i < planet.length; i++){
     planet[i].setSprite(sprites[i]);
 }
 
+let fps = 1000;
+let now;
+let then = Date.now();
+let interval = 1000/fps;
+let delta;
+
 function loop(timestamp){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let deltaTime = (timestamp - lastFrameTime) / 1000;
+    //window.requestAnimationFrame(loop);
+
+    now = Date.now();
+    delta = now - then;
+    if(delta > interval){
+        then = now - (delta % interval);
+    
 
     if(Math.random() < 0.1){
         asteroid.push(new Planet(0, 0, random(0, 100), 0.01, ''));
@@ -65,7 +77,7 @@ function loop(timestamp){
 
     for(let i = 0; i < asteroid.length; i++){
         asteroid[i].display();  
-        asteroid[i].update(deltaTime)
+        asteroid[i].update()
         asteroid[i].shower();
     }
 
@@ -77,7 +89,7 @@ function loop(timestamp){
 
     for(let i = 0; i < planet.length; i++){
         planet[i].display();
-        planet[i].update(deltaTime);
+        planet[i].update();
     }
 
 
@@ -89,7 +101,7 @@ function loop(timestamp){
 
     rot += 0.01;
 
-    //window.requestAnimationFrame(loop);
+}
 
 }
 

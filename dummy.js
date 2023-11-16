@@ -30,11 +30,23 @@ function strokeArc(x, y, r, col){
 function rect(x, y, w, h, col){
     ctx.beginPath();
     ctx.fillStyle = col;
-    ctx.fillRect(x, y, w. h);
+    ctx.fillRect(x, y, w, h);
     ctx.fill();
+    ctx.strokeStyle="#ccc";
+    ctx.strokeRect(x, y, w, h);
+    ctx.stroke();
     ctx.closePath();
 }
 
 function random(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+function text(x, y, text, col){
+    ctx.beginPath();
+    ctx.strokeStyle = col;
+    ctx.font = "16px Tahoma";
+    ctx.strokeText(text, x, y); 
+    ctx.stroke();
+    ctx.closePath();
 }
