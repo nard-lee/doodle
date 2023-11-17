@@ -1,9 +1,63 @@
-<mxfile host="app.diagrams.net" modified="2023-11-17T01:07:57.731Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0" version="22.1.2" etag="6ZcTPfjUDV1k5apELN8K" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-17T01:29:25.626Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="Ffh1SkPYZsqUbYoteqzv" version="22.1.2" type="github">
   <diagram name="Page-1" id="MwpRq4-hX-NwPDFgf5o7">
-    <mxGraphModel>
+    <mxGraphModel dx="794" dy="1836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="302.5" y="-60" width="125" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-2" value="Enrollment" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="-60" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-4" value="Person" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="-250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-5" value="Professor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="-250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-6" value="Student" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-7" value="Course" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-15" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERmandOne;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ONHOq_dUqG0g4-FLYR0t-7" target="ONHOq_dUqG0g4-FLYR0t-1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="360" y="130" as="sourcePoint" />
+            <mxPoint x="460" y="30" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-16" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;startArrow=ERmandOne;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ONHOq_dUqG0g4-FLYR0t-6">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="442" y="80" as="sourcePoint" />
+            <mxPoint x="300" y="-20" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-21" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToOne;startArrow=ERmandOne;rounded=0;entryX=0.45;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="ONHOq_dUqG0g4-FLYR0t-4">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="170" y="-141.51" as="sourcePoint" />
+            <mxPoint x="120" y="101.50999999999999" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="6" y="253.49" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-22" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToOne;startArrow=ERmandOne;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="ONHOq_dUqG0g4-FLYR0t-4" target="ONHOq_dUqG0g4-FLYR0t-5">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="410" y="-120" as="sourcePoint" />
+            <mxPoint x="550" y="-230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ONHOq_dUqG0g4-FLYR0t-24" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="ONHOq_dUqG0g4-FLYR0t-5" target="ONHOq_dUqG0g4-FLYR0t-7">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="690" y="-240" as="sourcePoint" />
+            <mxPoint x="670" y="50" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="710" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
